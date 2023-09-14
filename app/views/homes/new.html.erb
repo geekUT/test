@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+
+<div class="post-container">
+    <p class="title">投稿フォーム</p>
+    <%= form_for(@home, :url => { controller:'homes', action:'create'})do |f| %>
+    <%= f.label :投稿内容 %>
+        <br>
+        <%= f.text_field :name,size: 140%>
+        <br>
+
+
+        
+      <div class="field">
+        <%= f.label :images %>
+        <%= f.file_field :images, multiple: true %>
+      </div>
+
+  <div class="actions">
+    <%= f.submit "送信"%>
+    <br>
+  </div>
+    <% end %>
+</div>

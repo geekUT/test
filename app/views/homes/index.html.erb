@@ -1,0 +1,35 @@
+<h3>投稿を検索</h3>
+ <%= form_tag({controller:"homes",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索する'  %>
+<% end %>
+
+<%= link_to "ログイン", homes_path %>
+<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+<%= link_to "新規登録", new_user_registration_path %>
+<%= link_to "新規投稿ページへ", new_home_path %>
+<div class="homes-container">
+  <% @homes.each do |t| %>
+    <div class="home">
+    <div class="main-box">
+    <div class="left-container"><%= t.name %></div>
+    <div class="right-container">
+      <%= t.user.email %>
+
+      
+      <% t.images.each do |image| %>
+        <%= image_tag image.image_url, size: "250x200" %>
+        <% end %>
+
+      <%= t.created_at %>
+      <%= link_to "詳細へ", home_path(t.id) %>
+      <% if user_signed_in? && current_user.id == t.user_id %>
+      <%= link_to "編集する", edit_home_path(t.id) %>
+      <%= link_to "削除する", home_path(t.id), method: :delete %>
+      <% end %> 
+    </div>
+    </div>
+
+</div>
+  <% end %>
+</div>

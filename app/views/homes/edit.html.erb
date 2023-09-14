@@ -1,0 +1,6 @@
+<%= form_for @home do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, :size => 140 %> 
+    <%= f.submit "編集する" %>
+    <%= link_to "悩み一覧に戻る", homes_path %>
+  <% end %>

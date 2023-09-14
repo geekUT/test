@@ -1,0 +1,13 @@
+<h1>GameAssistkun</h1>
+<h3>悩みの詳細</h3>
+<div class="home">
+  <p><%= @home.name %></p>
+  <% @post.images.each do |image| %>
+    <%= image_tag image.image_url, size: "250x200" %>
+  <p><%= @home.created_at %></p>
+  <% @home.images.each do |image| %>
+  <%= image_tag image.image_url, size: "250x200" %>
+</div>
+
+<%= link_to "悩み一覧に戻る", homes_path %>
+<%= link_to "編集する", edit_home_path(@home.id) %>
